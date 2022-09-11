@@ -5,25 +5,20 @@ import NotificationButton from '../NotificationButton';
 import './styles.css';
 import axios from "axios";
 import { BASE_URL } from "../../utils/request";
-import { sale } from "../../models/sale";
-
-
+import { Sale } from "../../models/sale";
 
 
 function SalesCard() {
 
-
   const [minDate, setMinDate] = useState(new Date());
   const [maxDate, setMaxDate] = useState(new Date());
 
-  const [sales, setSales] = useState<Sale[]>([]);
+  const [sales,setSales] = useState<Sale[]>([]);
 
   useEffect(() => {
-
     const dmin = minDate.toISOString().slice(0, 10);
     const dmax = maxDate.toISOString().slice(0, 10);
 
-    
 
     axios.get(`${BASE_URL}/sales/?minDate=${dmin}&maxDate=${dmax}`)
       .then(response => {
@@ -31,6 +26,7 @@ function SalesCard() {
       });
   }, [minDate, maxDate]);
 
+  // @ts-ignore
   return (
     <div className="dsmeta-card">
       <h2 className="dsmeta-sales-title">Vendas</h2>
