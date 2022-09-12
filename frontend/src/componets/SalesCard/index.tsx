@@ -12,8 +12,8 @@ function SalesCard() {
   const max = new Date();
   const min = new Date(new Date().setDate(new Date().getDate() - 365));
 
-  const [minDate, setMinDate] = useState(new Date());
-  const [maxDate, setMaxDate] = useState(new Date());
+  const [minDate, setminDate] = useState(min);
+  const [maxDate, setmaxDate] = useState(max);;
 
   const [sales,setSales] = useState<Sale[]>([]);
 
@@ -36,7 +36,7 @@ function SalesCard() {
         <div className="dsmeta-form-control-container">
           <DatePicker
             selected={minDate}
-            onChange={(date: Date) => setMinDate(date)}
+            onChange={(date: Date) => setminDate(date)}
             className="dsmeta-form-control"
             dateFormat="dd/MM/yyyy"
           />
@@ -44,7 +44,7 @@ function SalesCard() {
         <div className="dsmeta-form-control-container">
           <DatePicker
             selected={maxDate}
-            onChange={(date: Date) => setMaxDate(date)}
+            onChange={(date: Date) => setmaxDate(date)}
             className="dsmeta-form-control"
             dateFormat="dd/MM/yyyy"
           />
